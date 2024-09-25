@@ -1,4 +1,4 @@
-
+//CTRL + ? = comments out line
 
 export default function ObjectsPage() {
     
@@ -19,8 +19,12 @@ let studentOne = {
 let {
     studentName,
     studentAge: age, //changing the variable but still retains the same value
-    schedule:
+    //schedule:[course1, course2, course3, webDev2]
+    // schedule:[,,,webDev2] //, = represents index spaces in the index
+    schedule:{3:webDev2},
+    address: {city},
 } = studentOne;
+
 
     return (
         // Dot Notation to access attribues/properties
@@ -37,7 +41,8 @@ let {
             <h2>Destructuring</h2>
             <p>Name: {studentName}</p>
             <p>Age: {age}</p>
-            <p>Web Dev 2: </p>
+            <p>Web Dev 2: {webDev2}</p>
+            <p>City: {city}</p>
         </main>
     );
 }
