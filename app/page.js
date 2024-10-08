@@ -9,7 +9,7 @@ export default function Page() {
         <Link href="/week-2/" className="hover:text-green-500 text-xl">Week 2</Link>
       </p>
       <p>
-        <Link href="/week-3/" className="hover:text-green-500 text-xl">Week 3</Link>
+        <Link href="/week-33/" className="hover:text-green-500 text-xl">Week 3</Link>
       </p>
       <p>
         <Link href="/week-4/" className="hover:text-green-500 text-xl">Week 4</Link>

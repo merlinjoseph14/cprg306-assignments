@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import NewItem from './new-item';
 
-export default function NewItemPage() {
+const NewItemPage =  () => {
     return (
-        <div className="flex justify-center w-full">
-            <div>
-                <NewItem />
-            </div>
-        </div>
+        <main className="p-5">
+            <h1 className="text-4xl font-bold mb-5">Week 4</h1>
+            <NewItem/>
+        </main>
     );
 };
+
+export default NewItemPage;
