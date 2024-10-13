@@ -7,26 +7,25 @@ export default function NewItem() {
     const [name, setName] = useState("");
     const [category, setCategory] = useState("produce");
 
-    const increment = ()=> quantity<20 && setQuantity(quantity + 1);
     const decrement = ()=> quantity>1 && setQuantity(quantity - 1);
+    const increment = ()=> quantity<20 && setQuantity(quantity + 1);
 
     const handleSubmit = (event) => {
-        event.preventDEfault();
+        event.preventDefault();
         const item = {name, quantity, category};
         console.log(item);
-        alert('Item: ${name}\nQuantity: ${quantity}\nCategory: ${cateogry}');
+        alert(`Added item: ${name}, Quantity: ${quantity}, Category: ${category}`);
 
         setName("");
         setQuantity(1);
         setCategory("produce");
     };
 
-
     return (
-        <form onSubmit={handleSubmit} className="p-2 m-4 bg-gray-100 w-64 rounded-md">
+        <form onSubmit={handleSubmit} className="p-4 m-4 bg-gray-100 w-64 rounded-md">
             {/* Name Field */}
             <div className="mb-4">
-                <label htmlFor="name" className="block text-black font-bold">Name:</label>
+                <label htmlFor="name" className="block text-black font-bold">Item:</label>
                 <input
                     type ="text"
                     id="name"
@@ -43,19 +42,19 @@ export default function NewItem() {
                     <button
                         type="button"
                         className="w-8 bg-green-500 text-white text-semibold rounded-lg shadow-md disabled:bg-gray-300"
-                        onClick={increment}
-                        disabled={quantity === 20}
+                        onClick={decrement}
+                        disabled={quantity === 1}
                     >
-                        +
+                        -
                     </button>
                     <h1 className="text-black text-2xl">{quantity}</h1>
                     <button
                         type="button"
                         className="w-8 bg-green-500 text-white text-semibold rounded-lg shadow-md disabled:bg-gray-300"
-                        onClick={decrement}
-                        disabled={quantity === 1}
+                        onClick={increment}
+                        disabled={quantity === 20}
                     >
-                        -
+                        +
                     </button>
                 </div>
             </div>
@@ -86,17 +85,11 @@ export default function NewItem() {
             {/* Submit Button */}
             <button
                 type="submit"
-                className="w-full bg-blue-500 text-white p-2 rounded-lg"
+                className="w-full bg-green-500 text-white p-2 rounded-lg"
             >
                 +
             </button>
-
-
-        </form>
-
-
-
-        
+        </form> 
     );
 
 };
