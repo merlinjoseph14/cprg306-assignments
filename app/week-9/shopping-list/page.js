@@ -5,12 +5,27 @@ import NewItem from "./new-item";
 import itemsData from "./items.json";
 import { useState } from "react";
 import MealIdeas from "./meal-ideas";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useUserAuth } from "../_utils/auth-context";
 
 function Page() {
     // Initializing state variable for data from items.json
     const [items, setItems] = useState(itemsData);
     // State variable to hold the name of the selected item
     const [selectedItemName, setSelectedItemName] = useState("");
+    const { user } = useUserAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!user) {
+            router.push("/week-9"); 
+        }
+    }, [user, router]);
+
+    if (!user) {
+        return null; 
+    }
 
     const handleAddItem = (item) => {
         setItems(originalItems => [...originalItems, item]);
@@ -23,6 +38,7 @@ function Page() {
             .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|[\uD83C-\uDBFF\uDC00-\uDFFF]|[\u2011-\u26FF])/g, '');
             setSelectedItemName(cleanUpName);    
         };
+    
 
     return (
         <main className="p-5">
